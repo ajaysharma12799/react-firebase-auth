@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 10px 15px;
+    color: #fff;
+}
+a:hover {
+    color: #fff;
+}
+.user-name {
+    padding: 10px 15px;
+}
+.logout-button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding: 10px 15px;
+}
+.logout-button:hover {
+    color: #fff;
+    background-color: red;
+}
+.parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
