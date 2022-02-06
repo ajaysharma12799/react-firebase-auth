@@ -3,6 +3,7 @@ import { Alert, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 import GoogleButton from "react-google-button";
+import Helmet from "react-helmet";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,6 +35,11 @@ const Login = () => {
   };
 
   return (
+    <React.Fragment>
+    <Helmet>
+      <title>Login | React & Firebase Authentication</title>
+      <meta name="description" content="Login | React and Firebase Authentication via Practical Implementation"/>
+    </Helmet>
     <div className="mt-5 text-center">
       <Form onSubmit={handleSubmit}>
         <h1 className="lead display-5 text-uppercase">Login</h1>
@@ -66,6 +72,7 @@ const Login = () => {
         Don't Have Account? <Link to="/Signup">Signup</Link>
       </div>
     </div>
+    </React.Fragment>
   );
 };
 

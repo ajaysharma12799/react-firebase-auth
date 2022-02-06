@@ -8,10 +8,15 @@ import Home from "./components/Home";
 import { Container } from "react-bootstrap";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { Helmet } from "react-helmet";
 
 const App = () => {
   return (
     <React.Fragment>
+      <Helmet>
+        <title>React & Firebase Authentication</title>
+        <meta name="description" content="React and Firebase Authentication via Practical Implementation"/>
+      </Helmet>
       <BrowserRouter>
         <Container>
           <UserAuthContextProvider>

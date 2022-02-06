@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
+import { Helmet } from 'react-helmet';
 
 const Signup = () => {
 	const [email, setEmail] = useState("");
@@ -22,6 +23,11 @@ const Signup = () => {
 	};
 
 	return (
+		<React.Fragment>
+		<Helmet>
+        	<title>Signup | React & Firebase Authentication</title>
+        	<meta name="description" content="Signup | React and Firebase Authentication via Practical Implementation"/>
+      	</Helmet>
 		<div className="mt-5 text-center">
 			<h1 className="lead display-5 text-uppercase">Signup</h1>
 			{error && <Alert className="w-100" variant="danger">{error}</Alert>}
@@ -51,6 +57,7 @@ const Signup = () => {
 				Already Have Account? <Link to="/">Signin</Link>
 			</div>
 		</div>
+		</React.Fragment>
 	);
 };
 
