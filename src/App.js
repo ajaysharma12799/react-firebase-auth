@@ -1,43 +1,38 @@
-import React, {useState} from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import "./App.css"
-import Login from './screens/Login';
-import Register from './screens/Register';
-import Dashboard from './screens/Dashboard';
-import Home from './screens/Home';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-// Firebase
-import {initializeApp} from "firebase/app"
-import "firebase/auth"
-import { UserContext } from './context/UserContext';
-import FirebaseConfig from './config/FirebaseConfig';
-
-// init Firebase
-initializeApp(FirebaseConfig)
+import React from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Home from "./components/Home";
+import { Container } from "react-bootstrap";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const [user, setUser] = useState(null);
   return (
     <React.Fragment>
-      <Router>
-      <ToastContainer />
-        <UserContext.Provider value={{user, setUser}}>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/Login" exact component={Login} />
-            <Route path="/Register" exact component={Register} />
-            <Route path="/Dashboard" exact component={Dashboard} />
-          </Switch>
-        </UserContext.Provider>
-      </Router>
+      <BrowserRouter>
+        <Container>
+          <UserAuthContextProvider>
+            <Routes>
+              <Route path="/" exact element={<Login />} />
+              <Route path="/Signup" exact element={<Signup />} />
+              <Route
+                path="/Home"
+                exact
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </UserAuthContextProvider>
+        </Container>
+      </BrowserRouter>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default App
+export default App;
